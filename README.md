@@ -153,7 +153,7 @@ FORM processa.
 
   LOOP AT t_entrada INTO e_entrada.
 
-*Tela inicial da Transação
+*Tela inicial da Transação - Tabela RF02D
     PERFORM bdc_tela  USING 'SAPMF02D' '0107'.
     PERFORM bdc_campo USING 'BDC_OKCODE' '/00'.
     PERFORM bdc_campo USING 'RF02D-KUNNR' e_entrada-kunnr.
@@ -162,14 +162,14 @@ FORM processa.
     PERFORM bdc_campo USING 'RF02D-SPART' e_entrada-spart.
     PERFORM bdc_campo USING 'RF02D-KTOKD' e_entrada-ktokd.
 
-*Tela de Dados principais
+*Tela de Dados principais "TABELA KNA1
     PERFORM bdc_tela  USING 'SAPMF02D' '110'.
     PERFORM bdc_campo USING 'KNA1-NAME1'   e_entrada-name1.
     PERFORM bdc_campo USING 'KNA1-LAND1'   e_entrada-land1.
     PERFORM bdc_campo USING 'KNA1-SPRAS'   e_entrada-spras.
     PERFORM bdc_campo USING 'BDC_OKCODE' '=UPDA'.
 
-*Tela de Dados principais
+*Tela de Dados principais "TABELA KNVV
     PERFORM bdc_tela  USING 'SAPMF02D' '315'.
     PERFORM bdc_campo USING 'BDC_OKCODE' '=UPDA'.
     PERFORM bdc_campo USING 'KNVV-KZAZU' 'X'.
